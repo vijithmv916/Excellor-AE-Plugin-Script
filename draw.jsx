@@ -12,7 +12,7 @@
         controlEnd = trimPath.property("ADBE Vector Trim End")
 
         var easeIn = new KeyframeEase(0, 55);
-        var easeOut = new KeyframeEase(0, 60);
+        var easeOut = new KeyframeEase(0, 55);
 
         // key at second
         controlEnd.addKey(0)
@@ -35,4 +35,5 @@
         return myPanel;
     }
     var myToolsPanel = createUI(this);
+    // myToolsPanel.show()
 }

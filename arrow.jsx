@@ -70,5 +70,6 @@
     
     var myToolsPanel = createUI(this);
 
+    // myToolsPanel.show()
     
 }

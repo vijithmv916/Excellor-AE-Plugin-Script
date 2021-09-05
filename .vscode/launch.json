@@ -9,7 +9,7 @@
             "type": "extendscript-debug",
             "request": "launch",
             "name": "sample debug",
-            "program": "${workspaceFolder}/arrow.jsx",
+            "program": "${workspaceFolder}/draw.jsx",
             "stopOnEntry": false
         }
     ]
