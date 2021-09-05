@@ -1,7 +1,7 @@
 
 
 {
-    function lineEaser() {
+    function arrower() {
 
         var pathLine = app.project.activeItem.selectedLayers[0]
         try {
@@ -11,8 +11,8 @@
         }
         controlEnd = trimPath.property("ADBE Vector Trim End")
 
-        var easeIn = new KeyframeEase(.5, 70);
-        var easeOut = new KeyframeEase(.5, 70);
+        var easeIn = new KeyframeEase(0, 60);
+        var easeOut = new KeyframeEase(0, 60);
 
         // key at second
         controlEnd.addKey(0)
@@ -29,7 +29,7 @@
             undefined);
         var btn = myPanel.add("button", [10, 10, 90, 40], "Draw");
         try {
-            btn.onClick = function () { lineEaser() }
+            btn.onClick = function () { arrower() }
         } catch (e) { }
 
         return myPanel;

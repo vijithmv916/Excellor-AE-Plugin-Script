@@ -8,7 +8,7 @@
             "type": "extendscript-debug",
             "request": "launch",
             "name": "sample debug",
-            "program": "${workspaceFolder}/sample.jsx",
+            "program": "${workspaceFolder}/tester.jsx",
             "stopOnEntry": false
         }
     ]
