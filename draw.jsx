@@ -11,12 +11,12 @@
         }
         controlEnd = trimPath.property("ADBE Vector Trim End")
 
-        var easeIn = new KeyframeEase(0, 60);
+        var easeIn = new KeyframeEase(0, 55);
         var easeOut = new KeyframeEase(0, 60);
 
         // key at second
         controlEnd.addKey(0)
-        controlEnd.addKey(0.75)
+        controlEnd.addKey(1)
         controlEnd.setValueAtKey(1, 0)
         controlEnd.setValueAtKey(2, 100)
 
@@ -35,11 +35,4 @@
         return myPanel;
     }
     var myToolsPanel = createUI(this);
-
-    // myToolsPanel.show()
-
-
-
-
-    // Excellor_Flash(this)
 }
