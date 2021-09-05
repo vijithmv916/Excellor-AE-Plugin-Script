@@ -25,6 +25,15 @@
             "tTang = thisComp.layer(\""+ pathLine.name +"\").content(\"Shape 1\").content(\"Path 1\").path.tangentOnPath(TrimEnd); \r" +
             "angle = Math.atan2(tTang[1], tTang[0]); \r" +
             "radiansToDegrees(angle);"
+        
+        myTextLayer.property("Anchor Point").expression = "s = thisLayer; \r " +
+            "sTop = s.sourceRectAtTime().top; \r " +
+            "sLeft = s.sourceRectAtTime().left; \r " +
+            "sHeight = s.sourceRectAtTime().height; \r " +
+            "sAnchorY = sTop + (sHeight/2); \r " +
+            "sAnchorX = sLeft ; \r " +
+            "[sAnchorX, sAnchorY]"
+        
 
     }
 
