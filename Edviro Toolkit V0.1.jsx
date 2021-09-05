@@ -15,17 +15,20 @@
         textProp.setValue(textDocument);
 
 
-
+        // attaching head
         myTextLayer.position.expression = "tPath = thisComp.layer(\""+ pathLine.name +"\").content(\"Shape 1\").content(\"Path 1\").path; \r" +
             "TrimEnd = thisComp.layer(\""+ pathLine.name +"\").content(\"ADBE Vector Filter - Trim\").end/100; \r" +
             "x = tPath.pointOnPath(TrimEnd)[0]; \r" +
             "y = tPath.pointOnPath(TrimEnd)[1]; \r" +
             "[x+1920, y+1080];"
+        
+        // rotation head
         myTextLayer.rotation.expression = "TrimEnd = thisComp.layer(\""+ pathLine.name +"\").content(\"ADBE Vector Filter - Trim\").end/100;\r" +
             "tTang = thisComp.layer(\""+ pathLine.name +"\").content(\"Shape 1\").content(\"Path 1\").path.tangentOnPath(TrimEnd); \r" +
             "angle = Math.atan2(tTang[1], tTang[0]); \r" +
             "radiansToDegrees(angle);"
         
+        //anchor fix
         myTextLayer.property("Anchor Point").expression = "s = thisLayer; \r " +
             "sTop = s.sourceRectAtTime().top; \r " +
             "sLeft = s.sourceRectAtTime().left; \r " +
@@ -33,8 +36,13 @@
             "sAnchorY = sTop + (sHeight/2); \r " +
             "sAnchorX = sLeft ; \r " +
             "[sAnchorX, sAnchorY]"
-        
 
+        //animating size
+        textScale = myTextLayer.scale
+        textScale.addKey(0)
+        textScale.addKey(0.4)
+        textScale.setValueAtKey(1, [0,0])
+        textScale.setValueAtKey(2, [100, 100])
     }
 
 
@@ -43,17 +51,20 @@
         var pathLine = app.project.activeItem.selectedLayers[0]
         pathLine.label = 11
 
+        //getting trim keys
         try {
             var trimPath = pathLine.property("Contents").addProperty("ADBE Vector Filter - Trim")
         } catch (e) {
             alert("No Layer Selected");
         }
+
+        //animating trim path shape layer
         controlEnd = trimPath.property("ADBE Vector Trim End")
 
         var easeIn = new KeyframeEase(0, 55);
         var easeOut = new KeyframeEase(0, 55);
 
-        // key at second
+        // key at 1 sec
         controlEnd.addKey(0)
         controlEnd.addKey(1)
         controlEnd.setValueAtKey(1, 0)
@@ -65,6 +76,7 @@
         var s = app.project.activeItem.selectedLayers[0];
         s.label = 11
 
+        // create head id checked
         if(ishead){
             createHead(pathLine)
         }
@@ -94,6 +106,6 @@
     
     var myToolsPanel = createUI(this);
 
-    myToolsPanel.show()
+    // myToolsPanel.show()
     
 }

@@ -1,10 +1,7 @@
-s = thisLayer; 
-sTop = s.sourceRectAtTime().top; 
-sLeft = s.sourceRectAtTime().left; 
+textLy = app.project.activeItem.selectedLayers[0]
 
-sHeight = s.sourceRectAtTime().height; 
+scaleTextProp = textLy.property(5).property(6)
 
-sAnchorY = sTop + (sHeight/2); 
-sAnchorX = sLeft ; 
 
-[sAnchorX, sAnchorY]
+scaleTextProp.setValuesAtTimes([0, 1], [[0,0], [100, 100]])
+
