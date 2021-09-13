@@ -1,8 +1,15 @@
 {
   function createHead(pathLine) {
     var myTextLayer = app.project.activeItem.layers.addText();
+    var my_null = app.project.activeItem.layers.addNull();
+    my_null.transform.position.setValue([0, 0]);
+    my_null.label = 9;
 
-    myTextLayer.label = 11;
+    myTextLayer.setParentWithJump(my_null);
+    pathLine.setParentWithJump(my_null);
+    // my_null.active = false
+
+    myTextLayer.label = 9;
     var textProp = myTextLayer.property("Source Text");
     var textDocument = textProp.value;
     myString = "►";
@@ -57,7 +64,7 @@
 
   function drw(ishead) {
     var pathLine = app.project.activeItem.selectedLayers[0];
-    pathLine.label = 11;
+    pathLine.label = 9;
 
     //getting trim keys
     try {
@@ -84,7 +91,7 @@
     controlEnd.setTemporalEaseAtKey(2, [easeIn], [easeOut]);
 
     var s = app.project.activeItem.selectedLayers[0];
-    s.label = 11;
+    s.label = 9;
 
     // create head id checked
     if (ishead) {
@@ -101,11 +108,7 @@
 
       //SAMPLE UI CODE
       var btn = myPanel.add("button", [10, 10, 180, 30], "draw");
-      var ck = myPanel.add(
-        "checkbox",
-        [10, 35, 180, 55],
-        "Add Arrow"
-      );
+      var ck = myPanel.add("checkbox", [10, 35, 180, 55], "Add Arrow");
 
       try {
         btn.onClick = function () {
@@ -124,5 +127,4 @@
     }
   }
   ExTool(this);
-
 }
